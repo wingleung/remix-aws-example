@@ -1,40 +1,37 @@
-# Welcome to Remix!
+# Remix AWS example
 
-- 📖 [Remix docs](https://remix.run/docs)
+This is an example repo to illustrate and test the use of remix-aws in a remix project.
 
-## Development
+## Prerequisites
 
-Run the dev server:
+- SAM CLI: [how to install](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html) 
 
-```shellscript
-npm run dev
+## Local testing
+
+Link the local `remix-aws` build to this remix project.
+
+**NPM**
+
+```shell
+# in your local repo of remix-aws
+npm link
+
+# in this remix repo
+npm link remix-aws
+
+# check if your dependency is linked to the local repo
+ls -alh node_modules | grep remix-aws
 ```
 
-## Deployment
+After you've linked the local remix-aws repo you can run the sam cli commands using predefined npm scripts, this will...
 
-First, build your app for production:
+- build remix using the vite `awsPreset` from `remix-aws`
+- start a local lambda with api gateway v1 using sam cli
 
-```sh
-npm run build
+```shell
+# on x86_64
+npm run start:local-lambda:x86_64
+
+# on arm64
+npm run start:local-lambda:arm64
 ```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.

@@ -8,6 +8,8 @@
     "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
+    "start:local-lambda:x86_64": "npm run build && sam local start-api --template local-lambda.x86_64.yaml --static-dir build/client",
+    "start:local-lambda:arm64": "npm run build && sam local start-api --template local-lambda.arm64.yaml --static-dir build/client",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -32,6 +34,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.38",
+    "remix-aws": "^1.1.0",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.1.6",
     "vite": "^5.1.0",

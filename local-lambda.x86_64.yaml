@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+Description: lambda function with api gateway v1 for testing locally
+
+CommonArchitecture: &commonArchitecture
+  - x86_64
+
+CommonRuntime: &commonRuntime nodejs20.x
+
+CommonEnvs: &commonEnvs
+  - ENVIRONMENT: dev
+  - NODE_ENV: production
+
+Resources:
+  RemixFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./build/server
+      Handler: index.handler
+      Runtime: *commonRuntime
+      Architectures: *commonArchitecture
+      Timeout: 10
+      Environment:
+        Variables:
+          <<: *commonEnvs
+      Events:
+        RemixAPIGateway:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
