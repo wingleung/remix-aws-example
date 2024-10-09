@@ -6,6 +6,9 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { awsPreset, AWSProxy } from "remix-aws";
 
 export default defineConfig({
+  build: {
+    sourcemap: true
+  },
   plugins: [
     remix({
       future: {

@@ -8,6 +8,8 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  console.log('this log line should point to the source file `_index.tsx` if `build.sourcemap` is `true` in vite.config.js')
+
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="flex flex-col items-center gap-16">
