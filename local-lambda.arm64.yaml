@@ -15,8 +15,8 @@ Resources:
   RemixFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ./build/server
-      Handler: index.handler
+      CodeUri: ./
+      Handler: build/server/index.handler
       Runtime: *commonRuntime
       Architectures: *commonArchitecture
       Timeout: 10
